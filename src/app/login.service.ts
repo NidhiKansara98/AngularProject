@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class CommonService {
+export class LoginService {
 
   constructor() { }
 
@@ -14,6 +14,8 @@ export class CommonService {
         return true;
       }
       else{
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
         return false;
       }
   }

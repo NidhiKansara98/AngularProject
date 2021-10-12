@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonService } from './common.service';
+import { LoginService } from './login.service';
 import { LoginAuthGuard } from './login-auth.guard';
 import { LoginComponent } from './login/login.component';
 
@@ -19,7 +19,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [CommonService, LoginAuthGuard],
+  providers: [LoginService, LoginAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

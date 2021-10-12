@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Employee } from './employee';
+import { EmployeeService } from './employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
+  
 
-  constructor() { }
-
+  constructor() {}
   ngOnInit(): void {
   }
+
+
 
 }
