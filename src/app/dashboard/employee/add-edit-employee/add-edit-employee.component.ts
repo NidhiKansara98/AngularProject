@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee, Employees } from '../employee';
+import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 import { Location } from '@angular/common';
-import { FolderFormController } from '../employee.form';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EmployeeFormController } from '../employee.form';
 
 
 @Component({
@@ -15,48 +16,38 @@ import { FolderFormController } from '../employee.form';
 export class AddEditEmployeeComponent implements OnInit {
   public employee!: Employee[];
   public employeeFormGroup !: FormGroup;
-  issubmitted: boolean = false;
+  issubmitted = false;
   public show: boolean = false;
-  
-  // folderlist:Employees[] = [];
-  // tpayload!: Employees;
-  // folderform!: FolderFormController;
+  public clicked!:any;
 
+  tpayload!: Employee;
+  employeeform!: EmployeeFormController;
+  btnval = 'Add';
+  btnValUpdate = 'Update';
 
   constructor(private service: EmployeeService,
     private fb: FormBuilder,
     private router: Router, private location: Location,
-    private routes: ActivatedRoute) {
+    private routes: ActivatedRoute, public dialog: MatDialog,
+    private dialogRef: MatDialogRef<AddEditEmployeeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
 
-      // this.folderform = new FolderFormController(this.fb);
-      // this.employeeFormGroup = this.folderform.createFormGroup();
+    this.employeeform = new EmployeeFormController(this.fb);
+    this.employeeFormGroup = this.employeeform.createFormGroup();
 
     this.employeeFormGroup = this.fb.group({
       id: [''],
       first_name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
       last_name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
     });
-
-    //Match Id with routes
-    this.routes.paramMap.subscribe((params: any) => {
-      const empId = +params.get('id');
-      if (empId) {
-        this.getEmpById(empId);
-      }
-    })
   }
 
-  //Get Employee by Id
-  public getEmpById(id: number) {
-    this.service.getEmployeeById(id).subscribe((empId: Employee) =>
-      this.editEmp(empId), (err: string) => console.log(err));
+  ngOnInit() {
+    console.log(this.data);
+    this.employeeFormGroup.patchValue(this.data);
   }
 
-  //Patch value of employee
-  public editEmp(emp: Employee) {
-    this.employeeFormGroup.patchValue(emp);
-  }
 
   //Hide or show the Form
   public toggle() {
@@ -68,41 +59,34 @@ export class AddEditEmployeeComponent implements OnInit {
     return this.employeeFormGroup.controls;
   }
 
-  //Display list of employees
-  public emplist() {
-    this.router.navigateByUrl('emplist');
-  }
 
-
-  //Add and update the employee details
-  public onSave() {
+  //Add and update the employees
+  public addData(event:any) {
+    debugger
     if (this.employeeFormGroup.value != null) {
       this.issubmitted = true;
     }
 
-    if (this.employeeFormGroup.value.id) {
-      this.service.updateEmployees(this.employeeFormGroup.value).subscribe((data: Employee) => {
+    if (this.employeeFormGroup.value.id != '' && this.employeeFormGroup.value.id) {
+      this.tpayload = this.employeeform.buildSaveData(this.employeeFormGroup);
+      this.service.updateEmployees(this.tpayload).subscribe((data: Employee) => {
         alert("Employee updated successfully");
-        this.onReset();
-        this.location.back();
+        event.target.disabled = false;
+        this.onClose();
+        
       })
     }
     else {
-      this.service.addEmployee(this.employeeFormGroup.value).subscribe((data: Employee) => {
+      this.tpayload = this.employeeform.buildSaveData(this.employeeFormGroup);
+      this.service.addEmployee(this.tpayload).subscribe((data: Employee) => {
         alert("Employee added successfully");
-        this.location.back();
+        event.target.disabled = false;
+        this.onClose();
+
       })
     }
   }
 
-  // addFolder(){
-  //   if(this.employeeFormGroup.status == ''){
-  //     //this.tpayload = this.folderform.buildSaveData(this.employeeFormGroup);
-  //     this.service.addEmployee(this.employeeFormGroup.value).subscribe((data:Employees)=>{
-  //       //this.tpayload = this.folderform.buildSaveData(this.employeeFormGroup.value);
-  //     })
-  //   }
-  // // }
 
   //Reset Form value
   public onReset() {
@@ -110,11 +94,8 @@ export class AddEditEmployeeComponent implements OnInit {
   }
 
   //Move to back
-  public back() {
-    this.location.back();
-  }
-
-  ngOnInit(): void {
+  public onClose() {
+    this.dialog.closeAll();
   }
 
 }

@@ -11,7 +11,6 @@ export class EmployeeService {
 
   //Add new user
   public addEmployee(data:Employee):Observable<Employee>{
-    debugger
     return this.http.post<Employee>(`${this.baseUrl}employee`, data);
   }
 
@@ -34,4 +33,6 @@ export class EmployeeService {
   public deleteEmployee(id:number): Observable<number>{
     return this.http.delete<number>(`${this.baseUrl}employee/${id}`);
   }
+
+  
 }

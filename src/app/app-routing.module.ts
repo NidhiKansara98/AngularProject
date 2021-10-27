@@ -19,7 +19,8 @@ const routes: Routes = [
     path: 'dashboard', canLoad:[LoginAuthGuard],
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), 
 
-  }
+  },
+ 
 ];
 
 @NgModule({

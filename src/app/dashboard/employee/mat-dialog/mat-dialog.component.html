@@ -1,0 +1,9 @@
+<div>
+    <div class="content-container">
+      <button id="close-icon" class="btn btn-success" (click)="closeDialog()">close</button>
+      <p></p>
+      <span class="content-span full-width">{{data.message}}</span>
+    </div>
+    <button  id="no-button" class="btn btn-primary" [mat-dialog-close]="false">NO</button>
+    <button  id="yes-button" class="btn btn-danger" [mat-dialog-close]="true">YES</button>
+  </div>

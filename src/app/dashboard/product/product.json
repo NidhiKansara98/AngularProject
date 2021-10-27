@@ -1,0 +1,10 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "prod_name": "Soap",
+      "prod_detail": "Dove",
+      "prod_img": "dove.jpg"
+    }
+  ]
+}

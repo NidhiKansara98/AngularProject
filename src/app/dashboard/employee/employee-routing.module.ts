@@ -6,16 +6,17 @@ import { EmployeeComponent } from './employee.component';
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 
 const routes: Routes = [
-  { path: '', 
+  { 
+    path: '', 
     component: EmployeeComponent,
     children: [
-      {
-        path:'AddEditEmp',
-        component:AddEditEmployeeComponent,
-      },
-      { path:'addEdit/:id', component: AddEditEmployeeComponent},
+      // {
+      //   path:'AddEditEmp',
+      //   component:AddEditEmployeeComponent,
+      // },
+      // { path:'addEdit/:id', component: AddEditEmployeeComponent},
       { 
-        path:'emplist',
+        path:'',
         component:ListEmployeeComponent
       },
       { 
