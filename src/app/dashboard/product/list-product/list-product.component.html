@@ -5,16 +5,16 @@
             <p></p>
             <h4 align="center"><b><u>Product List</u></b></h4>
         </div>
-        <div class="card-header">
+        <div class="card-header" style='background-color:aqua'>
             <div class="row">
-                <div class="col-md-2">
+                <!-- <div class="col-md-2">
                     <label>Search by Firstname</label>
                 </div>
                 <div class="col-md-4"><input type="text" class="form-control" placeholder="Search..." />
-                </div>
-                <div class="col-md-6" align="right">
-                    <button mat-raised-button (click)="addProduct()" style="color: blue;">
-                        <i class="fas fa-plus"></i> Product</button>
+                </div> -->
+                <div class="col-md-6" align="left">
+                    <button mat-raised-button (click)="addProduct()" style="background-color: blue; color:white;">
+                        <i class="fa fa-plus"></i> Product</button>
                 </div>
             </div>
         </div>
@@ -37,13 +37,16 @@
                         <td>{{prod.prod_detail}}</td>
                         <td>{{prod.prod_img}}</td>
                         <td>
-                            <!-- <button mat-icon-button><mat-icon>launch</mat-icon></button> -->
-                            <button mat-raised-button class="btn btn-success" (click)="editProd(prod)">Edit</button>
-                            <button mat-raised-button class="btn btn-danger" (click)="deleteProd(prod.id)">Delete</button>
+                            <button mat-raised-button class="btn btn-success" (click)="editProd(prod)"><i class="fa fa-pencil" ></i></button>
+                            <button mat-raised-button class="btn btn-danger"><i class="fa fa-trash" (click)="deleteProd(prod.id)"></i></button>
                         </td>
+                    </tr>
+                    <tr class="border">
+                        <button mat-raised-button style="background:blue; color:white; margin-top:10px; margin-bottom:10px;"><mat-icon (click)="exportAsExcel()"> cloud_download</mat-icon> Export</button>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+ 

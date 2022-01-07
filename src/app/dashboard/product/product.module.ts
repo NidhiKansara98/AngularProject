@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { ListProductComponent } from './list-product/list-product.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialogComponent } from '../employee/mat-dialog/mat-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ExcelService } from './excel.service';
+
 
 
 @NgModule({
@@ -27,9 +30,10 @@ import { MatDialogComponent } from '../employee/mat-dialog/mat-dialog.component'
     ReactiveFormsModule,
     MatButtonModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
-  providers:[ProductService],
+  providers:[ProductService, ExcelService],
   entryComponents:[AddEditProductComponent, MatDialogComponent]
 })
 export class ProductModule { }

@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [EmployeeService]
 })

@@ -16,6 +16,7 @@ export class EmployeeService {
 
   //Get All Employee detail
   public getEmployees(): Observable<Employee[]>{
+    debugger
     return this.http.get<Employee[]>(`${this.baseUrl}employee`);
   }
 

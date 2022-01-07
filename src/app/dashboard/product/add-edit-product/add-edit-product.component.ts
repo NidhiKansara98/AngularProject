@@ -30,26 +30,27 @@ export class AddEditProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data);
     this.productFormGroup.patchValue(this.data);
   }
 
   public addEditProduct() {
+    debugger
     if (this.productFormGroup.value != null) {
       this.isSubmitted = true;
     }
 
     if (this.productFormGroup.value.id != '' && this.productFormGroup.value.id) {
+      debugger
       this.tpayload = this.productForm.buildSaveProduct(this.productFormGroup);
       this.prod_service.updateProduct(this.tpayload).subscribe((data: Product) => {
         alert("Product update successfully");
-        this.onClose();     
+        this.dialogRef.close(data); 
       })
     }else{
       this.tpayload = this.productForm.buildSaveProduct(this.productFormGroup);
       this.prod_service.addProduct(this.tpayload).subscribe((data: Product) => {
         alert("Product added successfully");
-        this.onClose();     
+        this.dialogRef.close(data); 
       })
     }
   }

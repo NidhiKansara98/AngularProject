@@ -32,6 +32,7 @@ export class AddEditEmployeeComponent implements OnInit {
     private dialogRef: MatDialogRef<AddEditEmployeeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
+      this.getEmployees();
     this.employeeform = new EmployeeFormController(this.fb);
     this.employeeFormGroup = this.employeeform.createFormGroup();
 
@@ -73,7 +74,7 @@ export class AddEditEmployeeComponent implements OnInit {
         alert("Employee updated successfully");
         event.target.disabled = false;
         this.onClose();
-        
+        return data;
       })
     }
     else {
@@ -87,6 +88,14 @@ export class AddEditEmployeeComponent implements OnInit {
     }
   }
 
+  public getEmployees() {
+    return this.service.getEmployees().subscribe((data: Employee[]) => {
+      this.employee = data;
+      // this.employeeList=new MatTableDataSource(data);
+      // this.employeeList.sort=this.sort;
+      // this.employeeList.paginator = this.paginator;
+    })
+  }
 
   //Reset Form value
   public onReset() {

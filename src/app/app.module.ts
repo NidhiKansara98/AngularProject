@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { LoginService } from './login.service';
 import { LoginAuthGuard } from './login-auth.guard';
 import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

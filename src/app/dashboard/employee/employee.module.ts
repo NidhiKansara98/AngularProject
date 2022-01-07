@@ -14,17 +14,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { SearchPipe } from './pipe/search.pipe';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
 import { DialogService } from './dialog.service';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterPipe } from './pipe/filter.pipe';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     EmployeeComponent,
     AddEditEmployeeComponent,
     ListEmployeeComponent,
     SearchPipe,
-    MatDialogComponent
+    MatDialogComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,9 @@ import { DialogService } from './dialog.service';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatPaginatorModule
+    NgxPaginationModule, 
+    MatPaginatorModule,
+    MatTableModule,
   ],
   providers: [EmployeeService, DialogService],
   entryComponents: [AddEditEmployeeComponent, MatDialogComponent]

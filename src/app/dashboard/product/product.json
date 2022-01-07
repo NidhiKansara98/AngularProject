@@ -5,6 +5,18 @@
       "prod_name": "Soap",
       "prod_detail": "Dove",
       "prod_img": "dove.jpg"
+    },
+    {
+      "id": 2,
+      "prod_name": "Waffer11",
+      "prod_detail": "Balaji",
+      "prod_img": "balaji.jpg"
+    },
+    {
+      "id": 3,
+      "prod_name": "gfhfghggfddfd",
+      "prod_detail": "fghfgh",
+      "prod_img": "gfhfgh"
     }
   ]
 }

@@ -3,49 +3,66 @@
 <p></p>
 
 <form [formGroup]="employeeFormGroup">
-    <div>
-        <label for="name">First Name:</label>
-        <input type="text" class="form-control" formControlName="first_name">
-        <span class="text-danger"
-            *ngIf="(employeeFormControl.first_name.touched || issubmitted) && employeeFormControl.first_name.errors?.required">
-            Please enter FirstName
-        </span>
-        <span class="text-danger"
-            *ngIf="(employeeFormControl.first_name.touched) && employeeFormControl.first_name.errors?.pattern">
-            Only characters are allow.
-        </span>
+  <div>
+    <div class="example-container">
+      <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput #input maxlength="10">
+      </mat-form-field>
+      <p></p>
+      <span class="text-danger"
+        *ngIf="(employeeFormControl.first_name.touched || issubmitted) && employeeFormControl.first_name.errors?.required">
+        Please enter FirstName
+      </span>
+      <span class="text-danger"
+        *ngIf="(employeeFormControl.first_name.touched) && employeeFormControl.first_name.errors?.pattern">
+        Only characters are allow.
+      </span>
     </div>
-    <div>
-        <label for="last_name">Last Name:</label>
-        <input type="text" class="form-control" formControlName="last_name">
-        <span class="text-danger"
-            *ngIf="(employeeFormControl.last_name.touched || issubmitted) && employeeFormControl.last_name.errors?.required">
-            Lastname is required.
-        </span>
-        <span class="text-danger"
-            *ngIf="(employeeFormControl.last_name.touched) && employeeFormControl.last_name.errors?.pattern">
-            Only characters are allow.
-        </span>
-    </div>
+  </div>
+  <div>
 
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" formControlName="email" #new_field>
-        <span class="text-danger"
-            *ngIf="(employeeFormControl.email.touched || issubmitted) && employeeFormControl.email.errors?.required">
-            Email is required.
-        </span>
-        <span class="text-danger"
-            *ngIf="(employeeFormControl.email.touched) && employeeFormControl.email.errors?.email">
-            Please enter proper email.
-        </span>
-    </div>
-    <p></p>
-    <div>
-        <button type="submit" mat-button class="btn btn-success" (click)="addData($event)"
-             [disabled]="clicked">{{btnval}}</button>
-        <span *ngIf="issubmitted"></span>&nbsp;
-        <button type="reset" class="btn btn-primary" (click)="onReset()">Reset</button>&nbsp;
-        <button type="close" class="btn btn-danger" (click)="onClose()">Close</button>
-    </div>
+    <label for="name">First Name:</label>
+    <input type="text" class="form-control"  formControlName="first_name">
+    <span class="text-danger"
+      *ngIf="(employeeFormControl.first_name.touched || issubmitted) && employeeFormControl.first_name.errors?.required">
+      Please enter FirstName
+    </span>
+    <span class="text-danger"
+      *ngIf="(employeeFormControl.first_name.touched) && employeeFormControl.first_name.errors?.pattern">
+      Only characters are allow.
+    </span>
+  </div>
+  <div>
+    <label for="last_name">Last Name:</label>
+    <input type="text" class="form-control" formControlName="last_name">
+    <span class="text-danger"
+      *ngIf="(employeeFormControl.last_name.touched || issubmitted) && employeeFormControl.last_name.errors?.required">
+      Lastname is required.
+    </span>
+    <span class="text-danger"
+      *ngIf="(employeeFormControl.last_name.touched) && employeeFormControl.last_name.errors?.pattern">
+      Only characters are allow.
+    </span>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" formControlName="email" #new_field>
+    <span class="text-danger"
+      *ngIf="(employeeFormControl.email.touched || issubmitted) && employeeFormControl.email.errors?.required">
+      Email is required.
+    </span>
+    <span class="text-danger" *ngIf="(employeeFormControl.email.touched) && employeeFormControl.email.errors?.email">
+      Please enter proper email.
+    </span>
+  </div>
+  <p></p>
+  <div>
+    <button type="submit" mat-button class="btn btn-success" (click)="addData($event)"
+      [disabled]="clicked">{{btnval}}</button>
+    <span *ngIf="issubmitted"></span>&nbsp;
+    <button type="reset" class="btn btn-primary" (click)="onReset()">Reset</button>&nbsp;
+    <button type="close" class="btn btn-danger" (click)="onClose()">Close</button>
+  </div>
 </form>

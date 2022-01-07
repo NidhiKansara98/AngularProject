@@ -24,6 +24,7 @@ export class ProductService {
 
   //Update product detail
   public updateProduct(data:Product):Observable<Product>{
+    debugger
     return this.http.put<Product>(`${this.baseUrl}product/${data.id}`, data);
   }
 

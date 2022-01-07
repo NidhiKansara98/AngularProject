@@ -25,12 +25,6 @@
       "email": "jbutt@gmail.com"
     },
     {
-      "id": 11,
-      "first_name": "John",
-      "last_name": "Doe",
-      "email": "john_doe@gmail.com"
-    },
-    {
       "id": 12,
       "first_name": "Nidhi",
       "last_name": "Kansara",
@@ -43,16 +37,10 @@
       "email": "jinal_p123@yahoo.com"
     },
     {
-      "id": 15,
-      "first_name": "Vaibhavi",
-      "last_name": "Kansara",
-      "email": "vaibhavi@gmail.com"
-    },
-    {
-      "id": 16,
-      "first_name": "John",
-      "last_name": "senon",
-      "email": "john@gmail.com"
+      "id": 14,
+      "first_name": "Sahabbb",
+      "last_name": "Chauhan",
+      "email": "sahab@gmail.com"
     }
   ]
 }
